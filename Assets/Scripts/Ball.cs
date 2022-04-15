@@ -5,8 +5,8 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     [SerializeField] private float _speed = 3.5f;
-    private Vector3 lastPosition = Vector3.zero;
-    public Rigidbody rigidBody;
+    private Vector3 _lastPosition = Vector3.zero;
+    private Rigidbody rigidBody;
 
     void Start()
     {
@@ -22,8 +22,8 @@ public class Ball : MonoBehaviour
         transform.Translate(direction * _speed * Time.deltaTime);
 
         // Реализация инерции https://question-it.com/questions/1622381/kak-dobavit-inertsiju-obektu-3d-v-unity
-        Vector3 velocity = (lastPosition - transform.position) * Time.deltaTime;
-        lastPosition = transform.position;
+        Vector3 velocity = (_lastPosition - transform.position) * Time.deltaTime;
+        _lastPosition = transform.position;
         rigidBody.velocity = velocity;
     }
 }
