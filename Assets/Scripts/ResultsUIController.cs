@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ResultsUIController : MonoBehaviour
 {
     [SerializeField] Text resultText;
+    [SerializeField] Transform tableTransform;
+    [SerializeField] GameObject tableRecord;
+    [SerializeField] GameObject placeRecordValueText;
+    [SerializeField] GameObject playerRecordValueText;
+    [SerializeField] GameObject timeRecordValueText;
 
     public static ResultsUIController instance = null;
     // Start is called before the first frame update
@@ -59,5 +66,24 @@ public class ResultsUIController : MonoBehaviour
                 resultText.text = "Таблица рекордов";
                 break;
         }
+    }
+
+    public void FillTable(List<RecordsDataModel.Record> records)
+    {
+        
+        foreach (var record in records.Select((value, index) => new { index, value }))
+        {
+            GameObject recordPrefabInScene = Instantiate(tableRecord, tableTransform);
+
+            GameObject placeRecordPrefabInScene = Instantiate(placeRecordValueText, recordPrefabInScene.transform);
+            placeRecordPrefabInScene.GetComponent<TextMeshProUGUI>().text = $"{record.index + 1}";
+
+            GameObject playerTextPrefabInScene = Instantiate(playerRecordValueText, recordPrefabInScene.transform);
+            playerTextPrefabInScene.GetComponent<TextMeshProUGUI>().text = $"{record.value.playerId}";
+
+            GameObject timeTextPrefabInScene = Instantiate(timeRecordValueText, recordPrefabInScene.transform);
+            timeTextPrefabInScene.GetComponent<TextMeshProUGUI>().text = $"{record.value.playerFinishTime} секунд";
+        }
+       
     }
 }

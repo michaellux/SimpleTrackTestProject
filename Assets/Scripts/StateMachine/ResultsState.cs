@@ -14,6 +14,11 @@ internal class ResultsState : State
         Action postLoad = () =>
         {
             ResultsUIController.instance.UpdateResults(status);
+            RecordsDataModel.LoadRecords();
+            RecordsDataModel.AddNewRecord(Player.instance.gameObject.GetInstanceID(), Player.instance.raceResult);
+            RecordsDataModel.SortRecords();
+            RecordsDataModel.SaveRecords();
+            ResultsUIController.instance.FillTable(RecordsDataModel.RecordsData.records);
         };
         command.Execute(postLoad);
     }
