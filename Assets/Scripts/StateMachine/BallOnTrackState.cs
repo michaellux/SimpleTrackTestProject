@@ -16,9 +16,13 @@ internal class BallOnTrackState : State
         switch (eventItem)
         {
             case Events.FallingOffTheTrack:
+            {
+                stateMachine.State = new ResultsState(PlayerStatuses.Lose);
+                break;
+            }
             case Events.CrossFinishLine:
             {
-                stateMachine.State = new ResultsState();
+                stateMachine.State = new ResultsState(PlayerStatuses.Win);
                 break;
             }
             case Events.EscapeButtonPressed:

@@ -9,7 +9,11 @@ internal class MenuState : State
     internal MenuState()
     {
         ShowResultsCommand command = new ShowResultsCommand();
-        command.Execute();
+        Action postLoad = () =>
+        {
+            ResultsUIController.instance.UpdateResults(PlayerStatuses.NotPlayingNow);
+        };
+        command.Execute(postLoad);
     }
 
     protected override void ChangeState(StateMachine stateMachine, Events eventItem)

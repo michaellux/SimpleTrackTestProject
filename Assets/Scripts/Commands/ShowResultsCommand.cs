@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 class ShowResultsCommand : Command
 {
-    public override void Execute()
+    public override void Execute(Action postLoad)
     {
-        MenuController.instance.ShowResultsScreen();
+        ScenesController.instance.ShowResultsScreen(postLoad);
     }
 }
 

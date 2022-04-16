@@ -22,5 +22,6 @@ public class Boundary : MonoBehaviour
         currentball.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         yield return new WaitForSeconds(3);
         GameManager.instance.StateMachine.FindOut(Events.FallingOffTheTrack);
+        Debug.Log("FallingOff");
     }
 }

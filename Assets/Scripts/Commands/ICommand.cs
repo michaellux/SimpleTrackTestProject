@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 internal interface ICommand
 {
-    void Execute();
+    void Execute(Action postLoad);
 }

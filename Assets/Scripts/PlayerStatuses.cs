@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public abstract class Command : ICommand
+public enum PlayerStatuses
 {
-    public abstract void Execute(Action postLoad);
+    Win, Lose, NotPlayingNow
 }
