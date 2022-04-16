@@ -8,28 +8,16 @@ internal class BallOnTrackState : State
 {
     internal BallOnTrackState()
     {
-           
+        
     }
 
     protected override void ChangeState(StateMachine stateMachine, Events eventItem)
     {
         switch (eventItem)
         {
-            case Events.FallingOffTheTrack:
-            {
-                stateMachine.State = new ResultsState(PlayerStatuses.Lose);
+            case Events.BallВeganToMove:
+                stateMachine.State = new RaceHasBegunState();
                 break;
-            }
-            case Events.CrossFinishLine:
-            {
-                stateMachine.State = new ResultsState(PlayerStatuses.Win);
-                break;
-            }
-            case Events.EscapeButtonPressed:
-            {
-               stateMachine.State = new MenuState();
-               break;
-            }
         }
     }
 }

@@ -24,19 +24,19 @@ public class ScenesController : MonoBehaviour
         #endregion
     }
 
-    public void LaunchGameTrack()
+    public void LoadGameTrackScene()
     {
         SceneManager.LoadScene("GameTrack");
     }
 
-    public void ShowResultsScreen(Action postLoad)
+    public void LoadResultsScreenScene(Action postLoad, string oldSceneName)
     {
         //SceneManager.LoadScene("ResultsScreen");
-        StartCoroutine(AsyncLoadScene("ResultsScreen", "GameTrack", postLoad));
+        StartCoroutine(AsyncLoadScene("ResultsScreen", oldSceneName, postLoad));
         
     }
 
-    // https://answers.unity.com/questions/1297392/how-do-i-get-a-reference-to-an-object-in-another-s.html
+    //based on https://answers.unity.com/questions/1297392/how-do-i-get-a-reference-to-an-object-in-another-s.html
     public IEnumerator AsyncLoadScene(string newSceneName, string oldSceneName, Action postLoad)
     {
         Debug.Log("AsyncLoadScene");

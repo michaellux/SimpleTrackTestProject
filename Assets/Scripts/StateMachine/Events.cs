@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 public enum Events
 {
+    BallВeganToMove,
     CrossFinishLine,
     FallingOffTheTrack,
     EscapeButtonPressed

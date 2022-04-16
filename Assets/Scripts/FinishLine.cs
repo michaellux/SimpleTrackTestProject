@@ -16,11 +16,10 @@ public class FinishLine : MonoBehaviour
         
     }
 
-    IEnumerator OnTriggerEnter(Collider collision)
+    void OnTriggerEnter(Collider collision)
     {
         GameObject currentball = collision.gameObject;
         currentball.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        yield return new WaitForSeconds(3);
         GameManager.instance.StateMachine.FindOut(Events.CrossFinishLine);
         Debug.Log("CrossFinishLine");
     }

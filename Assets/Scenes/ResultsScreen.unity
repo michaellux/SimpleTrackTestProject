@@ -1899,7 +1899,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 619494480}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2252,7 +2252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5880548694154481397, guid: 54c9a9ebb8a879e419568e6a6a572803, type: 3}
       propertyPath: m_TagString
-      value: Results
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5880548694154481402, guid: 54c9a9ebb8a879e419568e6a6a572803, type: 3}
       propertyPath: m_Pivot.x
@@ -2284,7 +2284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5880548694154481402, guid: 54c9a9ebb8a879e419568e6a6a572803, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 404.75
+      value: 1028.1
       objectReference: {fileID: 0}
     - target: {fileID: 5880548694154481402, guid: 54c9a9ebb8a879e419568e6a6a572803, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2337,6 +2337,14 @@ PrefabInstance:
     - target: {fileID: 5880548694154481402, guid: 54c9a9ebb8a879e419568e6a6a572803, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5880548694154481403, guid: 54c9a9ebb8a879e419568e6a6a572803, type: 3}
+      propertyPath: m_Text
+      value: n/a
+      objectReference: {fileID: 0}
+    - target: {fileID: 5880548694154481403, guid: 54c9a9ebb8a879e419568e6a6a572803, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54c9a9ebb8a879e419568e6a6a572803, type: 3}

@@ -22,6 +22,13 @@ public class ResultsUIController : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         #endregion
+
+        resultText.text = "Таблица рекордов";
+    }
+
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame
@@ -40,7 +47,7 @@ public class ResultsUIController : MonoBehaviour
         switch (status)
         {
             case PlayerStatuses.Win:
-                resultText.text = "Вы выиграли";
+                resultText.text = $"Вы выиграли. Результат: {Player.instance.raceResult} секунд";
                 break;
             case PlayerStatuses.Lose:
                 resultText.text = "Вы проиграли";
@@ -49,6 +56,7 @@ public class ResultsUIController : MonoBehaviour
                 resultText.text = "Таблица рекордов";
                 break;
             default:
+                resultText.text = "Таблица рекордов";
                 break;
         }
     }

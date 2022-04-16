@@ -21,7 +21,7 @@ public class Ball : MonoBehaviour
         Vector3 direction = new Vector3(horizontalInput, 0, verticalInput);
         transform.Translate(direction * _speed * Time.deltaTime);
 
-        // Реализация инерции https://question-it.com/questions/1622381/kak-dobavit-inertsiju-obektu-3d-v-unity
+        //the implementation of inertia is based on https://question-it.com/questions/1622381/kak-dobavit-inertsiju-obektu-3d-v-unity
         Vector3 velocity = (_lastPosition - transform.position) * Time.deltaTime;
         _lastPosition = transform.position;
         rigidBody.velocity = velocity;

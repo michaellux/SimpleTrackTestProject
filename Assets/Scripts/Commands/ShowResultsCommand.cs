@@ -8,7 +8,7 @@ class ShowResultsCommand : Command
 {
     public override void Execute(Action postLoad)
     {
-        ScenesController.instance.ShowResultsScreen(postLoad);
+        ScenesController.instance.LoadResultsScreenScene(postLoad, "GameTrack");
     }
 }
 

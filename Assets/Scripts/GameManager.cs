@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] GameObject ball;
     public StateMachine StateMachine { get; set; }
 
     public static GameManager instance = null;
@@ -24,18 +25,31 @@ public class GameManager : MonoBehaviour
 
         StateMachine = new StateMachine();
     }
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     public void BackToMainScreen()
     {
         SceneManager.LoadScene("MainScreen");
+    }
+
+    public void StartRace()
+    {
+        Stopwatch.instance.StartStopwatch();
+    }
+
+    public void StopRace()
+    {
+        Stopwatch.instance.StopStopwatch();
+        DestroyBall();
+        WriteResult();
+    }
+
+    public void DestroyBall()
+    {
+        Destroy(ball);
+    }
+
+    public void WriteResult()
+    {
+       Player.instance.raceResult = Stopwatch.instance.time.Seconds;
     }
 }
