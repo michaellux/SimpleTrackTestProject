@@ -18,7 +18,7 @@ public class RecordsDataModel : MonoBehaviour
         {
             string json = File.ReadAllText(recordsSavePath);
             Debug.Log("Json" + json);
-            if (!string.IsNullOrEmpty(json))
+            if (!string.IsNullOrEmpty(json) && json != "[]")
             {
                 RecordsData.records = JsonConvert.DeserializeObject<List<Record>>(json);
             }

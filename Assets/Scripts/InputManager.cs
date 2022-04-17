@@ -27,12 +27,12 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Escape))
         {
-            GameManager.instance.BackToMainScreen();
+            StateMachine.instance.FindOut(Events.EscapeButtonPressed);
         }
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
-            GameManager.instance.StateMachine.FindOut(Events.BallÂeganToMove);
+            StateMachine.instance.FindOut(Events.BallÂeganToMove);
         }
     }
 }

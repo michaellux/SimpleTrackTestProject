@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject ball;
-    public StateMachine StateMachine { get; set; }
 
     public static GameManager instance = null;
     void Awake()
@@ -25,7 +24,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         #endregion
 
-        StateMachine = new StateMachine();
+        //StateMachine = new StateMachine();
     }
 
     public void BackToMainScreen()
@@ -45,9 +44,29 @@ public class GameManager : MonoBehaviour
         WriteResult();
     }
 
+    public void PauseRace()
+    {
+        HideBall();
+    }
+
+    public void ResumeRace()
+    {
+        ShowBall();
+    }
+
     public void DestroyBall()
     {
         Destroy(ball);
+    }
+
+    public void ShowBall()
+    {
+        ball.SetActive(true);
+    }
+
+    public void HideBall()
+    {
+        ball.SetActive(false);
     }
 
     public void WriteResult()

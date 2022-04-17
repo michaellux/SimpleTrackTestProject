@@ -1,13 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
-
-public class StateMachine
+using UnityEngine;
+public class StateMachine : MonoBehaviour
 {
+    public static StateMachine instance = null;
     internal State State { get; set; }
 
-    public StateMachine()
+    void Awake()
     {
-        State = new BallOnTrackState();
+        #region Singleton
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+        #endregion
+        State = new MenuState();
+        //StateMachine = new StateMachine();
     }
 
     public void FindOut(Events eventItem)

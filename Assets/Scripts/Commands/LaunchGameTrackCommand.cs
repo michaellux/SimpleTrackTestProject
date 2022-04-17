@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class ShowResultsCommand : Command
+class LaunchGameTrackCommand : Command
 {
     public override void Execute(Action postLoad, string oldSceneName, bool isAsync)
     {
-        ScenesController.instance.LoadResultsScreenScene(postLoad, oldSceneName, isAsync);
+        ScenesController.instance.LoadGameTrackScene(postLoad, oldSceneName, isAsync);
     }
 }
-

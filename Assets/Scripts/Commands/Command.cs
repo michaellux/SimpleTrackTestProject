@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 public abstract class Command : ICommand
 {
-    public abstract void Execute(Action postLoad);
+    public abstract void Execute(Action postLoad, string oldSceneName, bool isAsync);
 }

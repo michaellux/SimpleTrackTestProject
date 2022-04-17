@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class ShowResultsCommand : Command
+class GoToMenuCommand : Command
 {
     public override void Execute(Action postLoad, string oldSceneName, bool isAsync)
     {
-        ScenesController.instance.LoadResultsScreenScene(postLoad, oldSceneName, isAsync);
+        ScenesController.instance.LoadMainScreenScene(postLoad, oldSceneName, isAsync);
     }
 }
-

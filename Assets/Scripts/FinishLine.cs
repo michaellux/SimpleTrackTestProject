@@ -20,7 +20,7 @@ public class FinishLine : MonoBehaviour
     {
         GameObject currentball = collision.gameObject;
         currentball.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        GameManager.instance.StateMachine.FindOut(Events.CrossFinishLine);
+        StateMachine.instance.FindOut(Events.CrossFinishLine);
         Debug.Log("CrossFinishLine");
     }
 }

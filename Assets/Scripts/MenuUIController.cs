@@ -33,11 +33,12 @@ public class MenuUIController : MonoBehaviour
 
     public void LaunchGameTrack()
     {
-        ScenesController.instance.LoadGameTrackScene();
+        StateMachine.instance.FindOut(Events.PlayButtonPressed);
     }
 
     public void ShowResults()
     {
-        ScenesController.instance.LoadResultsScreenScene(() => { }, "MainScreen");
+        StateMachine.instance.FindOut(Events.ResultsButtonPressed);
+        //ScenesController.instance.LoadResultsScreenScene(() => { });
     }
 }

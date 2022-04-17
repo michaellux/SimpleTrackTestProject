@@ -24,16 +24,43 @@ public class ScenesController : MonoBehaviour
         #endregion
     }
 
-    public void LoadGameTrackScene()
+    public void LoadMainScreenScene(Action postload, string oldSceneName, bool isAsyncLoad)
     {
-        SceneManager.LoadScene("GameTrack");
+        if (isAsyncLoad)
+        {
+            StartCoroutine(AsyncLoadScene("MainScreen", oldSceneName, postload));
+        }
+        else
+        {
+            SceneManager.LoadScene("MainScreen");
+            postload();
+        }
     }
 
-    public void LoadResultsScreenScene(Action postLoad, string oldSceneName)
+    public void LoadGameTrackScene(Action postLoad, string oldSceneName, bool isAsyncLoad)
     {
-        //SceneManager.LoadScene("ResultsScreen");
-        StartCoroutine(AsyncLoadScene("ResultsScreen", oldSceneName, postLoad));
-        
+        if (isAsyncLoad)
+        {
+            StartCoroutine(AsyncLoadScene("GameTrack", oldSceneName, postLoad));
+        }
+        else
+        {
+            SceneManager.LoadScene("GameTrack");
+            postLoad();
+        }
+    }
+
+    public void LoadResultsScreenScene(Action postLoad, string oldSceneName, bool isAsyncLoad)
+    {
+        if (isAsyncLoad)
+        {
+            StartCoroutine(AsyncLoadScene("ResultsScreen", oldSceneName, postLoad));
+        }
+        else
+        {
+            SceneManager.LoadScene("ResultsScreen");
+            postLoad();
+        }
     }
 
     //based on https://answers.unity.com/questions/1297392/how-do-i-get-a-reference-to-an-object-in-another-s.html
@@ -48,4 +75,13 @@ public class ScenesController : MonoBehaviour
         yield return new WaitForEndOfFrame();
         SceneManager.UnloadSceneAsync(oldSceneName);
     }
+
+    //public IEnumerator AsyncLoadScene(string newSceneName, Action postLoad)
+    //{
+    //    Debug.Log("AsyncLoadScene");
+    //    yield return SceneManager.LoadSceneAsync(newSceneName, LoadSceneMode.Additive);
+    //    SceneManager.SetActiveScene(SceneManager.GetSceneByName(newSceneName));
+
+    //    postLoad();
+    //}
 }
