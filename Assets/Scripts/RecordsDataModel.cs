@@ -10,8 +10,8 @@ using Newtonsoft.Json;
 [System.Serializable]
 public class RecordsDataModel : MonoBehaviour
 {
-    private static string recordsSavePath = "Assets/Data/SaveRecordsData.json";
-    //[SerializeField] private static RecordsData recordsData = new RecordsData();
+    private static string recordsSavePath = $"{Application.dataPath}/Data/SaveRecordsData.json";
+
     public static void LoadRecords()
     {
         if (File.Exists(recordsSavePath))
