@@ -15,8 +15,7 @@ internal class ResultsState : State
         if (status == PlayerStatuses.Win)
         {
             RecordsDataModel.AddNewRecord(Player.instance.gameObject.GetInstanceID(), Player.instance.raceResult);
-        } 
-        RecordsDataModel.SortRecords();
+        }
         RecordsDataModel.SaveRecords();
         ResultsUIController.instance.FillTable(RecordsDataModel.RecordsData.records);
     }

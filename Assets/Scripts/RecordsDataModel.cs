@@ -41,11 +41,6 @@ public class RecordsDataModel : MonoBehaviour
         RecordsData.records.Add(newRecord);
     }
 
-    public static void SortRecords()
-    {
-        RecordsData.records.OrderBy(record => record.playerFinishTime);
-    }
-
     [System.Serializable]
     public static class RecordsData
     {

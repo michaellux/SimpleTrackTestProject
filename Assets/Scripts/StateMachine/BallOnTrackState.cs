@@ -9,10 +9,11 @@ internal class BallOnTrackState : State
     internal BallOnTrackState()
     {
         Debug.Log("BallOnTrackState");
-        if (GameManager.instance != null)
-        {
-            GameManager.instance.ResumeRace();
-        }
+        GameManager.instance.StartRace();
+        //if (GameManager.instance != null)
+        //{
+        //    GameManager.instance.ResumeRace();
+        //}
     }
 
     protected override void ChangeState(StateMachine stateMachine, Events eventItem)

@@ -10,7 +10,6 @@ internal class RaceHasBegunState : State
     internal RaceHasBegunState()
     {
         Debug.Log("RaceHasBegunState");
-        GameManager.instance.StartRace();
     }
     protected override void ChangeState(StateMachine stateMachine, Events eventItem)
     {

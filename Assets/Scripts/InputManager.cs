@@ -29,10 +29,5 @@ public class InputManager : MonoBehaviour
         {
             StateMachine.instance.FindOut(Events.EscapeButtonPressed);
         }
-
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
-        {
-            StateMachine.instance.FindOut(Events.BallÂeganToMove);
-        }
     }
 }

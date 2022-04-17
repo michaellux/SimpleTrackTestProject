@@ -70,8 +70,7 @@ public class ResultsUIController : MonoBehaviour
 
     public void FillTable(List<RecordsDataModel.Record> records)
     {
-        
-        foreach (var record in records.Select((value, index) => new { index, value }))
+        foreach (var record in records.OrderBy(record => record.playerFinishTime).Select((value, index) => new { index, value }))
         {
             GameObject recordPrefabInScene = Instantiate(tableRecord, tableTransform);
 

@@ -34,7 +34,7 @@ internal class MenuState : State
                     {
                         stateMachine.State = new BallOnTrackState();
                     };
-                    command.Execute(postLoad, "MenuScreen", false);
+                    command.Execute(postLoad, "MainScreen", true);
                     break;
                 }
             case Events.ResultsButtonPressed:
