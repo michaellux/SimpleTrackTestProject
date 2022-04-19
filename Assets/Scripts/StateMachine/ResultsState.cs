@@ -10,6 +10,7 @@ internal class ResultsState : State
     internal ResultsState(PlayerStatuses status)
     {
         Debug.Log("ResultsState");
+        ResultsUIController.instance.gameObject.SetActive(true);
         ResultsUIController.instance.UpdateResults(status);
         RecordsDataModel.LoadRecords();
         if (status == PlayerStatuses.Win)
@@ -28,6 +29,7 @@ internal class ResultsState : State
                 {
                     GoToMenuCommand command = new GoToMenuCommand();
                     Action postLoad = () => {
+                        ResultsUIController.instance.gameObject.SetActive(false);
                         stateMachine.State = new MenuState();
                     };
                     command.Execute(postLoad, "ResultsScreen", true);

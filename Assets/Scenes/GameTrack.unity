@@ -300,24 +300,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242892055}
   m_CullTransparentMesh: 1
---- !u!1 &410707582 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4124317695155435407, guid: 451b63a8744f9d644bbf7ff8632ed343, type: 3}
-  m_PrefabInstance: {fileID: 895948405}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &410707584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 410707582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5f55dcb44db45947b7c3cd7fc3c7a33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 10
 --- !u!1001 &471053329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -376,7 +358,15 @@ PrefabInstance:
     - target: {fileID: 82600849255766387, guid: a0723a5e57eef5941ab0336d9ea90279, type: 3}
       propertyPath: ball
       value: 
-      objectReference: {fileID: 410707582}
+      objectReference: {fileID: 1096471775213857004, guid: 28f4ad44e94b6da488029cbab51fcb58, type: 3}
+    - target: {fileID: 82600849255766387, guid: a0723a5e57eef5941ab0336d9ea90279, type: 3}
+      propertyPath: ballPrefab
+      value: 
+      objectReference: {fileID: 1096471775213857004, guid: 28f4ad44e94b6da488029cbab51fcb58, type: 3}
+    - target: {fileID: 82600849255766387, guid: a0723a5e57eef5941ab0336d9ea90279, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 895948408}
     - target: {fileID: 82600849255766387, guid: a0723a5e57eef5941ab0336d9ea90279, type: 3}
       propertyPath: raceCountdownText
       value: 
@@ -676,8 +666,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 782253157}
+  - component: {fileID: 782253158}
   m_Layer: 0
-  m_Name: RaceCountDown
+  m_Name: RaceCountdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -698,6 +689,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &782253158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782253156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3313fe73ad23338469774e377ac34c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raceCountdownText: {fileID: 242892057}
 --- !u!1 &867941052
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,7 +730,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.525, g: 0.5023529, b: 0.4405882, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -895,6 +899,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceResult: 0
+--- !u!4 &895948408 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2281193458309449744, guid: 451b63a8744f9d644bbf7ff8632ed343, type: 3}
+  m_PrefabInstance: {fileID: 895948405}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1130935057
 GameObject:
   m_ObjectHideFlags: 0

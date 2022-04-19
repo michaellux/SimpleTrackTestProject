@@ -65,7 +65,6 @@ public class ScenesController : MonoBehaviour
     //based on https://answers.unity.com/questions/1297392/how-do-i-get-a-reference-to-an-object-in-another-s.html
     public IEnumerator AsyncLoadScene(string newSceneName, string oldSceneName, Action postLoad)
     {
-        Debug.Log("AsyncLoadScene");
         yield return SceneManager.LoadSceneAsync(newSceneName, LoadSceneMode.Single);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(newSceneName));
 

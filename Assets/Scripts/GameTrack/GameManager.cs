@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject ball;
-    [SerializeField] TextMeshProUGUI raceCountdownText;
-
-    private readonly int countdownStartSeconds = 3;
+    [SerializeField] Transform playerTransform;
+    [SerializeField] GameObject ballPrefab;
+    private GameObject ballOnScene;
 
     public static GameManager instance = null;
     void Awake()
@@ -27,13 +25,11 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         #endregion
-
-        //StateMachine = new StateMachine();
     }
 
     void Start()
     {
-        raceCountdownText.text = $"{countdownStartSeconds}";
+        
     }
 
     public void BackToMainScreen()
@@ -43,13 +39,14 @@ public class GameManager : MonoBehaviour
 
     public void StartRace()
     {
-        StartCoroutine(RaceCountdown());
+        SetBallOnTrack();
+        StartCoroutine(LaunchRaceCountdown());
     }
 
     public void StopRace()
     {
         Stopwatch.instance.StopStopwatch();
-        DestroyBall();
+        RemoveBall();
         WriteResult();
     }
 
@@ -63,36 +60,34 @@ public class GameManager : MonoBehaviour
         ShowBall();
     }
 
-    public void DestroyBall()
+    public void SetBallOnTrack()
     {
-        Destroy(ball);
+        ballOnScene = Instantiate(ballPrefab, playerTransform);
+    }
+
+    public void RemoveBall()
+    {
+        Destroy(ballOnScene);
     }
 
     public void ChangeBallMovableStatus(bool desiredStatus)
     {
-        ball.GetComponent<Ball>().ChangeBallMovableStatus(desiredStatus);
+        ballOnScene.GetComponent<Ball>().ChangeBallMovableStatus(desiredStatus);
     }
 
     public void ShowBall()
     {
-        ball.SetActive(true);
+        ballOnScene.SetActive(true);
     }
 
     public void HideBall()
     {
-        ball.SetActive(false);
+        ballOnScene.SetActive(false);
     }
 
-    private IEnumerator RaceCountdown()
+    private IEnumerator LaunchRaceCountdown()
     {
-        int counter = countdownStartSeconds;
-        while (counter > 0)
-        {
-            yield return new WaitForSeconds(1);
-            counter--;
-            raceCountdownText.text = $"{counter}";
-        }
-        raceCountdownText.text = string.Empty;
+        yield return StartCoroutine(RaceCountdown.instance.StartRaceCountdown());
         ChangeBallMovableStatus(true);
         Stopwatch.instance.StartStopwatch();
         StateMachine.instance.FindOut(Events.BallÂeganToMove);

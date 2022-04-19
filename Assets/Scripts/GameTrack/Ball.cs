@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     [SerializeField] private float _speed = 3.5f;
-    private bool isMovable = false;
+    [SerializeField] private bool isMovable = false;
     private Vector3 _lastPosition = Vector3.zero;
     private Rigidbody rigidBody;
 
