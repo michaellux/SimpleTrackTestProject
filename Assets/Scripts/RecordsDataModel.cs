@@ -27,18 +27,31 @@ public class RecordsDataModel : MonoBehaviour
                 RecordsData.records = new List<Record>();
             }
         }
+        else
+        {
+            CreateDataFile();
+            RecordsData.records = new List<Record>();
+        }
     }
 
-    public static void SaveRecords()
+    async public static void SaveRecords()
     {
-        string json = JsonConvert.SerializeObject(RecordsData.records);
-        File.WriteAllText(recordsSavePath, json);
+        using (StreamWriter writer = new StreamWriter(recordsSavePath, false))
+        {
+            string json = JsonConvert.SerializeObject(RecordsData.records);
+            await writer.WriteLineAsync(json);
+        }
     }
 
     public static void AddNewRecord(int playerId, int playerResult)
     {
         Record newRecord = new Record(playerId, playerResult);
         RecordsData.records.Add(newRecord);
+    }
+
+    public static void CreateDataFile()
+    {
+        File.Create(recordsSavePath).Close();
     }
 
     [System.Serializable]

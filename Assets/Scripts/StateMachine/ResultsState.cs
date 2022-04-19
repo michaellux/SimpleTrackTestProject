@@ -18,7 +18,7 @@ internal class ResultsState : State
             RecordsDataModel.AddNewRecord(Player.instance.gameObject.GetInstanceID(), Player.instance.raceResult);
         }
         RecordsDataModel.SaveRecords();
-        ResultsUIController.instance.FillTable(RecordsDataModel.RecordsData.records);
+        ResultsUIController.instance.UpdateTable(RecordsDataModel.RecordsData.records);
     }
 
     protected override void ChangeState(StateMachine stateMachine, Events eventItem)

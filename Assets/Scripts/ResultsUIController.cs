@@ -68,8 +68,10 @@ public class ResultsUIController : MonoBehaviour
         }
     }
 
-    public void FillTable(List<RecordsDataModel.Record> records)
+    public void UpdateTable(List<RecordsDataModel.Record> records)
     {
+        ClearOldDataFromTable();
+
         foreach (var record in records.OrderBy(record => record.playerFinishTime).Select((value, index) => new { index, value }))
         {
             GameObject recordPrefabInScene = Instantiate(tableRecord, tableTransform);
@@ -84,5 +86,13 @@ public class ResultsUIController : MonoBehaviour
             timeTextPrefabInScene.GetComponent<TextMeshProUGUI>().text = $"{record.value.playerFinishTime} секунд";
         }
        
+    }
+
+    public void ClearOldDataFromTable()
+    {
+        foreach (Transform row in tableTransform)
+        {
+            Destroy(row.gameObject);
+        }
     }
 }
