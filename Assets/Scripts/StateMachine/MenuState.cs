@@ -10,17 +10,6 @@ internal class MenuState : State
     internal MenuState()
     {
         Debug.Log("MenuState");
-        //GoToMenuCommand command = new GoToMenuCommand();
-        //Action postLoad = () => { };
-        //command.Execute(postLoad);
-        //GameManager.instance.PauseRace();
-        //GameManager.instance.BackToMainScreen();
-        //ShowResultsCommand command = new ShowResultsCommand();
-        //Action postLoad = () =>
-        //{
-        //    ResultsUIController.instance.UpdateResults(PlayerStatuses.NotPlayingNow);
-        //};
-        //command.Execute(postLoad);
     }
 
     protected override void ChangeState(StateMachine stateMachine, Events eventItem)

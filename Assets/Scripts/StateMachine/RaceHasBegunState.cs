@@ -37,16 +37,8 @@ internal class RaceHasBegunState : State
                 command.Execute(postLoad, "GameTrack", true);
                 break;
             }
-            case Events.EscapeButtonPressed:
-            {
-                GoToMenuCommand command = new GoToMenuCommand();
-                Action postLoad = () => {
-                    GameManager.instance.PauseRace();
-                    stateMachine.State = new MenuState();
-                };
-                command.Execute(postLoad, "GameTrack", false);
+            default:
                 break;
-            }
         }
     }
 }

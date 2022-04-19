@@ -23,15 +23,7 @@ internal class BallOnTrackState : State
             case Events.BallВeganToMove:
                 stateMachine.State = new RaceHasBegunState();
                 break;
-            case Events.EscapeButtonPressed:
-                {
-                    GoToMenuCommand command = new GoToMenuCommand();
-                    Action postLoad = () => {
-                        GameManager.instance.PauseRace();
-                        stateMachine.State = new MenuState();
-                    };
-                    command.Execute(postLoad, "GameTrack", false);
-                }
+            default:
                 break;
         }
     }

@@ -30,7 +30,7 @@ internal class ResultsState : State
                     Action postLoad = () => {
                         stateMachine.State = new MenuState();
                     };
-                    command.Execute(postLoad, "ResultsScreen", false);
+                    command.Execute(postLoad, "ResultsScreen", true);
                 }
                 break;
             default:
