@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class ScenesController : MonoBehaviour
 {
     public static ScenesController instance = null;
@@ -67,21 +66,9 @@ public class ScenesController : MonoBehaviour
     public IEnumerator AsyncLoadScene(string newSceneName, string oldSceneName, Action postLoad)
     {
         Debug.Log("AsyncLoadScene");
-        yield return SceneManager.LoadSceneAsync(newSceneName, LoadSceneMode.Additive);
+        yield return SceneManager.LoadSceneAsync(newSceneName, LoadSceneMode.Single);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(newSceneName));
 
         postLoad();
-
-        yield return new WaitForEndOfFrame();
-        SceneManager.UnloadSceneAsync(oldSceneName);
     }
-
-    //public IEnumerator AsyncLoadScene(string newSceneName, Action postLoad)
-    //{
-    //    Debug.Log("AsyncLoadScene");
-    //    yield return SceneManager.LoadSceneAsync(newSceneName, LoadSceneMode.Additive);
-    //    SceneManager.SetActiveScene(SceneManager.GetSceneByName(newSceneName));
-
-    //    postLoad();
-    //}
 }
