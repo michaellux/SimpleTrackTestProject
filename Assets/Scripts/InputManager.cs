@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Runtime.InteropServices;
 public class InputManager : MonoBehaviour
 {
     public static InputManager instance = null;
+
+    [DllImport("__Internal")]
+    private static extern void AddEscapeKeyPressListener();
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +28,15 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            StateMachine.instance.FindOut(Events.EscapeButtonPressed);
+            Debug.Log("Escape");
+            SwitchToAnotherState();
         }
+    }
+
+    public void SwitchToAnotherState()
+    {
+        StateMachine.instance.FindOut(Events.EscapeButtonPressed);
     }
 }

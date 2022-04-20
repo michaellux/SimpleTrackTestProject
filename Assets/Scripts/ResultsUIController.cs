@@ -30,7 +30,7 @@ public class ResultsUIController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         #endregion
 
-        resultText.text = "Таблица рекордов";
+        resultText.text = "Results";
     }
 
     void Start()
@@ -54,16 +54,16 @@ public class ResultsUIController : MonoBehaviour
         switch (status)
         {
             case PlayerStatuses.Win:
-                resultText.text = $"Вы выиграли. Результат: {Player.instance.raceResult} секунд";
+                resultText.text = $"You win. Result: {Player.instance.raceResult} seconds";
                 break;
             case PlayerStatuses.Lose:
-                resultText.text = "Вы проиграли";
+                resultText.text = "You lose";
                 break;
             case PlayerStatuses.NotPlayingNow:
-                resultText.text = "Таблица рекордов";
+                resultText.text = "Results";
                 break;
             default:
-                resultText.text = "Таблица рекордов";
+                resultText.text = "Results";
                 break;
         }
     }
