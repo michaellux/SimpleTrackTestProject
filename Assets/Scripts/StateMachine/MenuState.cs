@@ -36,6 +36,16 @@ internal class MenuState : State
                     command.Execute(postLoad, "MainScreen", true);
                     break;
                 }
+            case Events.SettingsButtonPressed:
+                {
+                    GoToSettingsCommand command = new GoToSettingsCommand();
+                    Action postLoad = () =>
+                    {
+                        stateMachine.State = new SettingsState();
+                    };
+                    command.Execute(postLoad, "MainScreen", true);
+                    break;
+                }
             default:
                 break;
         }

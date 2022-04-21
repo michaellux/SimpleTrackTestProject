@@ -39,6 +39,10 @@ public class MenuUIController : MonoBehaviour
     public void ShowResults()
     {
         StateMachine.instance.FindOut(Events.ResultsButtonPressed);
-        //ScenesController.instance.LoadResultsScreenScene(() => { });
+    }
+
+    public void ShowSettings()
+    {
+        StateMachine.instance.FindOut(Events.SettingsButtonPressed);
     }
 }

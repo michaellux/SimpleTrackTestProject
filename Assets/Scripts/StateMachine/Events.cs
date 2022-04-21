@@ -7,6 +7,7 @@ public enum Events
 {
     PlayButtonPressed,
     ResultsButtonPressed,
+    SettingsButtonPressed,
     BallВeganToMove,
     CrossFinishLine,
     FallingOffTheTrack,

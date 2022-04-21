@@ -49,6 +49,19 @@ public class ScenesController : MonoBehaviour
         }
     }
 
+    public void LoadSettingsScreenScene(Action postLoad, string oldSceneName, bool isAsyncLoad)
+    {
+        if (isAsyncLoad)
+        {
+            StartCoroutine(AsyncLoadScene("SettingsScreen", oldSceneName, postLoad));
+        }
+        else
+        {
+            SceneManager.LoadScene("SettingsScreen");
+            postLoad();
+        }
+    }
+
     public void LoadResultsScreenScene(Action postLoad, string oldSceneName, bool isAsyncLoad)
     {
         if (isAsyncLoad)
