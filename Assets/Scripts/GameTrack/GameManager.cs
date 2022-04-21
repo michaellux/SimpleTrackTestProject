@@ -85,6 +85,11 @@ public class GameManager : MonoBehaviour
         ballOnScene.SetActive(false);
     }
 
+    public GameObject GetBallOnScene()
+    {
+        return ballOnScene;
+    }
+
     private IEnumerator LaunchRaceCountdown()
     {
         yield return StartCoroutine(RaceCountdown.instance.StartRaceCountdown());

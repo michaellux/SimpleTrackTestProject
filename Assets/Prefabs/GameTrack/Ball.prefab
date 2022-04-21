@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1096471775213857009}
   - component: {fileID: 1096471775213857010}
   - component: {fileID: 3645377331938336336}
+  - component: {fileID: 2683408229355168075}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096471775213857004}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3047279, y: 4.8099, z: -13.302566}
+  m_LocalPosition: {x: 1.3047279, y: 4.8099, z: -10.553478}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 1096471775326506698}
@@ -128,6 +129,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 3.5
   isMovable: 0
+--- !u!114 &2683408229355168075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096471775213857004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1465209106, guid: c8d0ad23af520fe46aabe2b1fecf6462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
 --- !u!1 &1096471775326506699
 GameObject:
   m_ObjectHideFlags: 0

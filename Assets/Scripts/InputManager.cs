@@ -74,6 +74,11 @@ public class InputManager : MonoBehaviour
             }
         }
     }
+
+    public InputModes GetCurrentInputMode()
+    {
+        return _currentInputMode;
+    }
 }
 
 
