@@ -36,7 +36,7 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             StateMachine.instance.FindOut(Events.EscapeButtonPressed);
         }

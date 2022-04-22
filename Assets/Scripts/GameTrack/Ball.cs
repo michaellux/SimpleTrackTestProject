@@ -9,7 +9,8 @@ public class Ball : MonoBehaviour
     [SerializeField] private bool isPressNowGo = false;
     [SerializeField] private bool isPressNowLeft = false;
     [SerializeField] private bool isPressNowRight = false;
-    private float leftRightCoef = 0.1f;
+    private float leftRightTouchCoef = 0.1f;
+    private float leftRightAccelerometerCoef = 0.4f;
     private Vector3 _lastPosition = Vector3.zero;
     private Rigidbody rigidBody;
 
@@ -21,47 +22,29 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(isMovable);
-        //Debug.Log(isPressNow);
         if (isMovable)
         {
-            if (isPressNowGo)
+            if (InputManager.instance.GetCurrentInputMode() == InputModes.Touch)
+            {
+                if (isPressNowGo)
+                {
+                    Go();
+                }
+                if (isPressNowLeft)
+                {
+                    LeftByTouch();
+                }
+                if (isPressNowRight)
+                {
+                    RightByTouch();
+                }
+            }
+            else if (InputManager.instance.GetCurrentInputMode() == InputModes.Accelerometer)
             {
                 Go();
-            }
-            if (isPressNowLeft)
-            {
-                Left();
-            }
-            if (isPressNowRight)
-            {
-                Right();
+                LeftRight();
             }
         }
-        //if (isMovable)
-        //{
-        //    switch (InputManager.instance.GetCurrentInputMode())
-        //    {
-        //        case InputModes.Touch:
-        //            MoveByTouch();
-        //            break;
-        //        case InputModes.Accelerometer:
-        //            MoveByAccelerometer();
-        //            break;
-        //        default:
-        //            break;
-        //    }
-            //float horizontalInput = Input.GetAxis("Horizontal");
-            //float verticalInput = Input.GetAxis("Vertical");
-
-            //Vector3 direction = new Vector3(horizontalInput, 0, verticalInput);
-            //transform.Translate(direction * _speed * Time.deltaTime);
-
-            ////the implementation of inertia is based on https://question-it.com/questions/1622381/kak-dobavit-inertsiju-obektu-3d-v-unity
-            //Vector3 velocity = (_lastPosition - transform.position) * Time.deltaTime;
-            //_lastPosition = transform.position;
-            //rigidBody.velocity = velocity;
-        //}
     }
 
     public void ChangeBallMovableStatus(bool desiredStatus)
@@ -95,13 +78,13 @@ public class Ball : MonoBehaviour
 
 
 
-    public void Left()
+    public void LeftByTouch()
     {
         Debug.Log("Left");
         Vector3 direction = Vector3.left;
 
         GameObject currentBall = GameManager.instance.GetBallOnScene();
-        currentBall.transform.Translate(direction * leftRightCoef * Time.deltaTime);
+        currentBall.transform.Translate(direction * leftRightTouchCoef * Time.deltaTime);
 
         Vector3 velocity = (_lastPosition - currentBall.transform.position) * Time.deltaTime;
         _lastPosition = currentBall.transform.position;
@@ -110,13 +93,26 @@ public class Ball : MonoBehaviour
         
     }
 
-    public void Right()
+    public void RightByTouch()
     {
         Debug.Log("Right");
         Vector3 direction = Vector3.right;
 
         GameObject currentBall = GameManager.instance.GetBallOnScene();
-        currentBall.transform.Translate(direction * leftRightCoef * Time.deltaTime);
+        currentBall.transform.Translate(direction * leftRightTouchCoef * Time.deltaTime);
+
+        Vector3 velocity = (_lastPosition - currentBall.transform.position) * Time.deltaTime;
+        _lastPosition = currentBall.transform.position;
+        currentBall.GetComponent<Rigidbody>().velocity = velocity;
+    }
+
+    public void LeftRight()
+    {
+        Debug.Log("LeftRight");
+        Debug.Log(Input.acceleration.x);
+        GameObject currentBall = GameManager.instance.GetBallOnScene();
+        Vector3 direction = new Vector3(Input.acceleration.x, 0, 0);
+        currentBall.transform.Translate(direction * leftRightAccelerometerCoef * Time.deltaTime);
 
         Vector3 velocity = (_lastPosition - currentBall.transform.position) * Time.deltaTime;
         _lastPosition = currentBall.transform.position;
