@@ -1296,7 +1296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a721abb744ff4434f9b0e6312046980f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentInputMode: 1
+  _currentInputMode: 0
   inputModeToggleGroup: {fileID: 244761331}
 --- !u!4 &1206043903
 Transform:

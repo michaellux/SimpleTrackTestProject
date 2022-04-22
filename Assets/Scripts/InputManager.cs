@@ -14,12 +14,6 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        LoadInputSettings();
-        //ToDo
-        //SetInputSettings();
-    }
-    void Start()
-    {
         #region Singleton
         if (instance == null)
         {
@@ -31,15 +25,19 @@ public class InputManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         #endregion
+        //LoadInputSettings();
+        //ToDo
+        //SetInputSettings();
+    }
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            StateMachine.instance.FindOut(Events.EscapeButtonPressed);
-        }
+       
     }
 
     public void SaveInputSettings()
@@ -61,6 +59,7 @@ public class InputManager : MonoBehaviour
 
     public void ChangeInputMode()
     {
+        Debug.Log("ChangeInputMode");
         foreach (var toggle in inputModeToggleGroup.ActiveToggles())
         {
             try

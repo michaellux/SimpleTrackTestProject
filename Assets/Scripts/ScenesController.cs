@@ -23,6 +23,14 @@ public class ScenesController : MonoBehaviour
         #endregion
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            StateMachine.instance.FindOut(Events.EscapeButtonPressed);
+        }
+    }
+
     public void LoadMainScreenScene(Action postload, string oldSceneName, bool isAsyncLoad)
     {
         if (isAsyncLoad)

@@ -89,8 +89,6 @@ public class Ball : MonoBehaviour
         Vector3 velocity = (_lastPosition - currentBall.transform.position) * Time.deltaTime;
         _lastPosition = currentBall.transform.position;
         currentBall.GetComponent<Rigidbody>().velocity = velocity;
-
-        
     }
 
     public void RightByTouch()

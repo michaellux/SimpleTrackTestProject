@@ -13,6 +13,8 @@ internal class RaceHasBegunState : State
     }
     protected override void ChangeState(StateMachine stateMachine, Events eventItem)
     {
+        GameTrackUIController.instance.gameObject.SetActive(false);
+
         switch (eventItem)
         {
             case Events.FallingOffTheTrack:
