@@ -10,10 +10,26 @@ using Newtonsoft.Json;
 [System.Serializable]
 public class RecordsDataModel : MonoBehaviour
 {
-    private static string recordsSavePath = $"{Application.dataPath}/Data/SaveRecordsData.json";
+    private static string FolderPath
+    {
+        get
+        {
+            return string.Format("{0}/{1}",
+                Application.persistentDataPath,
+                "Data");
+        }
+    }
+    private static string gameFileName = "SaveRecordsData";
+    private static string fileExtentionName = ".json";
+    private static string recordsSavePath = string.Format("{0}/{1}{2}", FolderPath, gameFileName, fileExtentionName);
 
     public static void LoadRecords()
     {
+        if (!Directory.Exists(FolderPath))
+        {
+            Directory.CreateDirectory(FolderPath);
+        }
+
         if (File.Exists(recordsSavePath))
         {
             string json = File.ReadAllText(recordsSavePath);
